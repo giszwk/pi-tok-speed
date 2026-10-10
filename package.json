@@ -1,6 +1,6 @@
 {
 	"name": "pi-tok-speed",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"private": true,
 	"type": "module",
 	"description": "Decode throughput (tok/s) and TTFT for Pi's footer stats line, using DeepSeek Harness accounting",

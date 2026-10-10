@@ -7,9 +7,31 @@
  *   node test/run.mjs
  */
 
+import { existsSync, readdirSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const INSTALL = "C:/Users/admin/.pi/agent/install/releases/1.1.0/node_modules/";
+/**
+ * Locate the Pi installation that provides the host packages, so the suite runs on any device.
+ * The layout is `<root>/releases/<version>/node_modules/`, with `<root>` taken from
+ * PI_MANAGED_INSTALL_ROOT or defaulting to `~/.pi/agent/install`.
+ */
+function resolveInstallDir() {
+	const roots = [process.env.PI_MANAGED_INSTALL_ROOT, join(homedir(), ".pi", "agent", "install")].filter(Boolean);
+	for (const root of roots) {
+		const releases = join(root, "releases");
+		if (!existsSync(releases)) continue;
+		const candidates = readdirSync(releases)
+			.filter((name) => existsSync(join(releases, name, "node_modules", "@earendil-works", "pi-coding-agent")))
+			.sort((left, right) => left.localeCompare(right, undefined, { numeric: true }))
+			.reverse();
+		if (candidates[0]) return join(releases, candidates[0], "node_modules").replace(/\\/g, "/") + "/";
+	}
+	throw new Error("No Pi installation found. Set PI_MANAGED_INSTALL_ROOT to the Pi install root (…/agent/install).");
+}
+
+const INSTALL = resolveInstallDir();
 const BASE = INSTALL + "@earendil-works/pi-coding-agent/dist/";
 const TUI = INSTALL + "@earendil-works/pi-tui/dist/index.js";
 
@@ -98,7 +120,7 @@ const session = {
 		thinkingLevel: "medium",
 	},
 	sessionManager: {
-		getCwd: () => "D:/work/agent-skill",
+		getCwd: () => "/home/dev/project",
 		getSessionName: () => undefined,
 		getEntryCount: () => branch.length,
 		getSessionId: () => "sess-1",

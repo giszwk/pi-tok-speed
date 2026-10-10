@@ -1,0 +1,21 @@
+{
+	"name": "pi-tok-speed",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"description": "Decode throughput (tok/s) and TTFT for Pi's footer stats line, using DeepSeek Harness accounting",
+	"keywords": ["pi-package", "pi", "tps", "tokens-per-second", "ttft", "footer"],
+	"license": "MIT",
+	"files": ["src", "dist", "README.md"],
+	"scripts": {
+		"build": "node scripts/build-single.mjs",
+		"test": "node test/run.mjs"
+	},
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*"
+	}
+}

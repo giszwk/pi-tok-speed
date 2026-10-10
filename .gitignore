@@ -1,0 +1,10 @@
+# session exports / scratch
+pi-session-*.html
+*.zip
+_conv.txt
+
+# deps & build artifacts
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

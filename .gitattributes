@@ -1,0 +1,6 @@
+# Keep sources LF on every platform (Windows checkouts included) so cross-device
+# git installs never produce spurious diffs.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary

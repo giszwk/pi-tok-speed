@@ -6,7 +6,7 @@
 	"description": "Decode throughput (tok/s) and TTFT for Pi's footer stats line, using DeepSeek Harness accounting",
 	"keywords": ["pi-package", "pi", "tps", "tokens-per-second", "ttft", "footer"],
 	"license": "MIT",
-	"files": ["src", "dist", "README.md"],
+	"files": ["src", "dist", "README.md", "README.zh-CN.md", "LICENSE"],
 	"scripts": {
 		"build": "node scripts/build-single.mjs",
 		"test": "node test/run.mjs"

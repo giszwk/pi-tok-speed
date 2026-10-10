@@ -2,6 +2,8 @@
 
 **Decode throughput (`tok/s`) and TTFT, spliced into Pi's built-in footer stats line.**
 
+**English** · [简体中文](README.zh-CN.md)
+
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![pi package](https://img.shields.io/badge/pi-package-d36ce3.svg)](https://pi.dev/packages)
 [![release](https://img.shields.io/github/v/tag/giszwk/pi-tok-speed?label=release&color=58b551)](https://github.com/giszwk/pi-tok-speed/tags)
@@ -196,6 +198,8 @@ scripts/         single-file build
 test/run.mjs     offline verification
 dist/            generated single-file build (committed)
 ```
+
+[中文说明](README.zh-CN.md)
 
 ## License
 
